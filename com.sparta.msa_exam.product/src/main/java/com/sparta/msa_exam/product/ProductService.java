@@ -27,6 +27,7 @@ public class ProductService {
     );
   }
 
+  @Transactional(readOnly = true)
   public Page<ProductResponseDto> getProduct(Pageable pageable) {
     return productRepository.getProduct(pageable);
   }
