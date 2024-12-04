@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class OrderResponseDto {
   private Long id;
-  private List<Long> orderItemIds;
+  private List<Long> productIds;
 
 }

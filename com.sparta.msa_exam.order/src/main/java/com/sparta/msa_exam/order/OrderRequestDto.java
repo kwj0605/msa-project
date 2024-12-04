@@ -5,5 +5,5 @@ import lombok.Data;
 
 @Data
 public class OrderRequestDto {
-  private List<Long> orderItemIds;
+  private List<Long> productIds;
 }

@@ -28,13 +28,18 @@ public class Order {
   private Long id;
 
   @ElementCollection
-  @CollectionTable(name = "order_items", joinColumns = @JoinColumn(name = "order_id"))
-  @Column(name = "order_item_id")
-  private List<Long> orderItemIds;
+  @CollectionTable(name = "product_ids", joinColumns = @JoinColumn(name = "product_id"))
+  @Column(name = "product_id")
+  private List<Long> productIds;
 
-  public static Order createOrder(List<Long> orderItemIds) {
+  public static Order createOrder(List<Long> productIds) {
     return Order.builder()
-        .orderItemIds(orderItemIds)
+        .productIds(productIds)
         .build();
+  }
+
+  // 상품 추가
+  public void additionalOrder(List<Long> productIds) {
+    this.productIds = productIds;
   }
 }

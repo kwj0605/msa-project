@@ -4,7 +4,9 @@ import com.sparta.msa_exam.order.exception.OrderServiceException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,6 +27,12 @@ public class OrderController {
       return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(e.getMessage());
     }
 
+  }
+
+  @PutMapping("/{orderId}")
+  public OrderResponseDto additionalOrder(@PathVariable Long orderId,
+                                      @RequestBody Long productId) {
+    return orderService.additionalOrder(orderId,productId);
   }
 
 }
