@@ -31,7 +31,7 @@ public class LocalJwtAuthenticationFilter implements GlobalFilter {
 
     String token = extractToken(exchange);
 
-    if (token == null || !validateToken(token, exchange)) {
+    if (token == null || !validateToken(token)) {
       exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
       return exchange.getResponse().setComplete();
     }
