@@ -46,6 +46,14 @@ public class OrderService {
     return toResponseDto(updatedOrder);
   }
 
+  @Transactional(readOnly = true)
+  public OrderResponseDto getOrderById(Long orderId) {
+    Order order = orderRepository.findById(orderId).orElseThrow(() ->
+        new ResponseStatusException(HttpStatus.NOT_FOUND, "Order not found"));
+
+    return toResponseDto(order);
+  }
+
   private OrderResponseDto toResponseDto(Order order) {
     return new OrderResponseDto(
         order.getId(),
